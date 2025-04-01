@@ -1,0 +1,12 @@
+{
+    "routes": [
+        {
+            "src": "/list",
+            "dest": "/api/list.js"
+        },
+        {
+            "src": "/download",
+            "dest": "/api/download.js"
+        }
+    ]
+}
