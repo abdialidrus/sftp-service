@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 import SftpClient from "ssh2-sftp-client";
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 
 config();
