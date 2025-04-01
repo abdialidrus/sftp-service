@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     }
 
     const remoteFilePath = req.query.file;
-    const localFilePath = path.join(__dirname, "downloads", remoteFilePath);
+    const localFilePath = path.join("/tmp", path.basename(remoteFilePath));
 
     if (!remoteFilePath) {
         return res.status(400).json({ error: "Missing file query parameter" });
