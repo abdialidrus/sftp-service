@@ -8,5 +8,10 @@
             "src": "/download",
             "dest": "/api/download.js"
         }
-    ]
+    ],
+    "functions": {
+        "api/*": {
+            "maxDuration": 60
+        }
+    }
 }
