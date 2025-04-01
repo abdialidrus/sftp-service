@@ -32,10 +32,19 @@ export default async function handler(req, res) {
         await sftp.fastGet(remoteFilePath, localFilePath);
         await sftp.end();
 
-        res.download(localFilePath, path.basename(remoteFilePath), (err) => {
-            if (err) console.error("Download error:", err);
-            fs.unlinkSync(localFilePath); // Delete file after sending
-        });
+        // Read file as a buffer
+        const fileBuffer = await fs.readFile(localFilePath);
+        const fileName = path.basename(remoteFilePath);
+
+        // Set response headers
+        res.setHeader("Content-Disposition", `attachment; filename=${fileName}`);
+        res.setHeader("Content-Type", "application/octet-stream");
+
+        // Send file buffer
+        res.status(200).send(fileBuffer);
+
+        // Delete local file after sending
+        await fs.unlink(localFilePath);
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: err.message });
