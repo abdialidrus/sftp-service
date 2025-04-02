@@ -7,6 +7,10 @@
         {
             "src": "/download",
             "dest": "/api/download.js"
+        },
+        {
+            "src": "/downloadTodaysFile",
+            "dest": "/api/downloadTodaysFile.js"
         }
     ],
     "functions": {
