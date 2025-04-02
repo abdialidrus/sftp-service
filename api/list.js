@@ -24,15 +24,6 @@ export default async function handler(req, res) {
 
         const dirList = await sftp.list('/');
 
-        for (const dir of dirList) {
-            console.log("Directory: " + dir.name);
-
-            // check if file is xml
-            if (!dir.name.includes(".xml")) continue;
-
-
-        }
-
         res.status(200).json(dirList.map(dir => dir.name));
     } catch (err) {
         console.log(err);
